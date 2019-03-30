@@ -9,7 +9,7 @@ MONGODB_PORT=27017
 HEATMAP_VERSION=lym_v1
 
 # Base directory
-BASE_DIR=/data01/shared/lehhou/u24_lymphocyte/
+BASE_DIR=/pylon5/ac3uump/alsm/active-learning/scae/u24_lymphocyte
 
 # The username you want to download heatmaps from
 USERNAME=john.vanarnam@gmail.com
@@ -21,7 +21,7 @@ JSON_OUTPUT_FOLDER=${BASE_DIR}/data/heatmap_jsons
 HEATMAP_TXT_OUTPUT_FOLDER=${BASE_DIR}/data/heatmap_txt
 LOG_OUTPUT_FOLDER=${BASE_DIR}/data/log
 SVS_INPUT_PATH=${BASE_DIR}/data/svs
-PATCH_PATH=${BASE_DIR}/data/patches
+PATCH_PATH=${BASE_DIR}/data/patches/cell_rep
 PATCH_SAMPLING_LIST_PATH=${BASE_DIR}/data/patch_sample_list
 RAW_MARKINGS_PATH=${BASE_DIR}/data/raw_marking_xy
 MODIFIED_HEATMAPS_PATH=${BASE_DIR}/data/modified_heatmaps
@@ -44,22 +44,28 @@ NEC_CNN_TRAINING_DATA=${BASE_DIR}/data/training_data_cnn
 NEC_CNN_TRAINING_DEVICE=gpu1
 NEC_CNN_PRED_DEVICE=gpu1
 
+# Purge modules
+#module purge
+
+# Load environment
+source /opt/packages/theano/theano_0.8.2/theanoEnv/bin/activate
+
 # Load modules
-module purge
-module load matlab
-module load mongodb/3.2.0
-module load jdk8/1.8.0_11
-module load openslide/3.4.0
-module load extlibs/1.0.0
-module load ITK/4.6.1
-module load cuda75
-module load anaconda2/4.4.0
-module load imagemagick/7.0.7
-export PATH=/home/lehhou/git/bin/:${PATH}
-export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/cm/shared/apps/anaconda2/current/lib/"
-export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/cm/shared/apps/cuda75/toolkit/7.5.18/lib64/"
-export CUDA_HOME=/cm/shared/apps/cuda75
-export LIBTIFF_CFLAGS="-I/cm/shared/apps/extlibs/include" 
-export LIBTIFF_LIBS="-L/cm/shared/apps/extlibs/lib -ltiff" 
-source ~/theano/bin/activate
+module load cuda/7.5
+module load theano/0.8.2
+#module load matlab
+#module load mongodb/3.2.0
+#module load jdk8/1.8.0_11
+module load openslide/3.4.1
+#module load extlibs/1.0.0
+#module load ITK/4.6.1
+#module load anaconda2/5.2.0
+#module load imagemagick/7.0.7
+#export PATH=/home/lehhou/git/bin/:${PATH}
+#export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/cm/shared/apps/anaconda2/current/lib/"
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/opt/packages/cuda/7.5/lib64/"
+export CUDA_HOME=/opt/packages/cuda/7.5/
+#export LIBTIFF_CFLAGS="-I/cm/shared/apps/extlibs/include" 
+#export LIBTIFF_LIBS="-L/cm/shared/apps/extlibs/lib -ltiff" 
+#source ~/theano/bin/activate
 

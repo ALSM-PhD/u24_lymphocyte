@@ -13,6 +13,9 @@ DONE_FILE=extraction_done.txt
 EXEC_FILE=pred.py
 
 PRE_FILE_NUM=0
+
+echo 'Start lymphocyte extraction and prediction'
+
 while [ 1 ]; do
     LINE_N=0
     FILE_NUM=0
@@ -32,7 +35,8 @@ while [ 1 ]; do
             fi
         fi
     done
-
+    
+    echo 'Done lymphocite CNN prediction'
     if [ ${EXTRACTING} -eq 0 ] && [ ${PRE_FILE_NUM} -eq ${FILE_NUM} ]; then break; fi
     PRE_FILE_NUM=${FILE_NUM}
 done
